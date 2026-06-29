@@ -1,6 +1,6 @@
 [project]
 name = "claimguard_uipath_agent"
-version = "0.0.3"
+version = "0.0.4"
 description = "ClaimGuard AI deterministic insurance claims orchestration coded agent"
 authors = [{ name = "ClaimGuard AI", email = "demo@example.com" }]
 dependencies = [
