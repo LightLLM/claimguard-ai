@@ -59,6 +59,17 @@ uip login
 uip skills install --agent cursor --local
 ```
 
+Native coded-agent publish flow:
+
+```powershell
+uv tool install uipath
+uip tools install @uipath/codedagent-tool
+uip codedagent setup
+uip codedagent init
+uip codedagent run main --file data/uipath-input-high-risk.json
+uip codedagent deploy --my-workspace
+```
+
 Quick terminal checklist:
 
 ```powershell

@@ -1,0 +1,146 @@
+{
+    "$schema": "https://cloud.uipath.com/draft/2024-12/entry-point",
+    "$id": "entry-points.json",
+    "entryPoints": [
+        {
+            "filePath": "main",
+            "uniqueId": "ee525083-01ba-4cb5-81a4-213183f7ece6",
+            "type": "function",
+            "input": {
+                "type": "object",
+                "properties": {
+                    "scenario": {
+                        "type": "string"
+                    },
+                    "claim": {
+                        "type": "object"
+                    },
+                    "policy": {
+                        "type": "object"
+                    },
+                    "human_decision": {
+                        "type": "object"
+                    }
+                },
+                "required": []
+            },
+            "output": {
+                "type": "object",
+                "properties": {
+                    "scenario": {
+                        "type": "string"
+                    },
+                    "claim_id": {
+                        "type": "string"
+                    },
+                    "fraud_signal": {
+                        "type": "object"
+                    },
+                    "human_decision": {
+                        "type": "object"
+                    },
+                    "audit_summary": {
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "scenario",
+                    "claim_id",
+                    "fraud_signal",
+                    "human_decision",
+                    "audit_summary"
+                ]
+            },
+            "graph": {
+                "nodes": [
+                    {
+                        "id": "main.py:233",
+                        "name": "main",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    },
+                    {
+                        "id": "main.py:153",
+                        "name": "_fraud_signal",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    },
+                    {
+                        "id": "main.py:99",
+                        "name": "_days_between",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    },
+                    {
+                        "id": "main.py:179",
+                        "name": "_human_decision",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    },
+                    {
+                        "id": "main.py:200",
+                        "name": "_audit_summary",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    },
+                    {
+                        "id": "main.py:85",
+                        "name": "_sample_policy",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    },
+                    {
+                        "id": "main.py:26",
+                        "name": "_sample_claims",
+                        "type": "function",
+                        "metadata": {
+                            "file": "main.py"
+                        }
+                    }
+                ],
+                "edges": [
+                    {
+                        "source": "main.py:153",
+                        "target": "main.py:99"
+                    },
+                    {
+                        "source": "main.py:233",
+                        "target": "main.py:153"
+                    },
+                    {
+                        "source": "main.py:233",
+                        "target": "main.py:179"
+                    },
+                    {
+                        "source": "main.py:233",
+                        "target": "main.py:200"
+                    },
+                    {
+                        "source": "main.py:233",
+                        "target": "main.py:85"
+                    },
+                    {
+                        "source": "main.py:233",
+                        "target": "main.py:26"
+                    },
+                    {
+                        "source": "main.py:233",
+                        "target": "main.py:26"
+                    }
+                ]
+            }
+        }
+    ]
+}

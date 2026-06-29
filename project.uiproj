@@ -1,0 +1,6 @@
+{
+  "ProjectType": "Function",
+  "Name": "claimguard_uipath_agent",
+  "Description": "ClaimGuard AI deterministic insurance claims orchestration coded agent",
+  "MainFile": null
+}
