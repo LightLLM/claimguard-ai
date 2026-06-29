@@ -22,6 +22,14 @@ class ClaimGuardOut:
     audit_summary: dict[str, Any]
 
 
+@dataclass
+class UnitTestOut:
+    passed: bool
+    total: int
+    failures: list[str]
+    results: list[dict[str, Any]]
+
+
 def _sample_claims() -> dict[str, dict[str, Any]]:
     return {
         "complete": {
@@ -222,12 +230,16 @@ def _audit_summary(
     }
 
 
-def main(input: ClaimGuardIn) -> ClaimGuardOut:
-    scenario = input.scenario or "complete"
-    claim = input.claim or _sample_claims().get(scenario, _sample_claims()["complete"])
-    policy = input.policy or _sample_policy(claim)
+def _run_claim_guard(
+    scenario: str,
+    claim_override: dict[str, Any] | None = None,
+    policy_override: dict[str, Any] | None = None,
+    human_decision_override: dict[str, Any] | None = None,
+) -> ClaimGuardOut:
+    claim = claim_override or _sample_claims().get(scenario, _sample_claims()["complete"])
+    policy = policy_override or _sample_policy(claim)
     fraud_signal = _fraud_signal(claim, policy)
-    human_decision = _human_decision(claim, fraud_signal, input.human_decision)
+    human_decision = _human_decision(claim, fraud_signal, human_decision_override)
     audit_summary = _audit_summary(claim, policy, fraud_signal, human_decision)
 
     return ClaimGuardOut(
@@ -236,4 +248,54 @@ def main(input: ClaimGuardIn) -> ClaimGuardOut:
         fraud_signal=fraud_signal,
         human_decision=human_decision,
         audit_summary=audit_summary,
+    )
+
+
+def main(input: ClaimGuardIn) -> ClaimGuardOut:
+    return _run_claim_guard(input.scenario, input.claim, input.policy, input.human_decision)
+
+
+def unit_tests() -> UnitTestOut:
+    expectations = {
+        "complete": {"risk_score": 0, "risk_level": "Low", "human_review_required": False, "decision": "approve"},
+        "missing_documents": {
+            "risk_score": 20,
+            "risk_level": "Low",
+            "human_review_required": False,
+            "decision": "request_more_documents",
+        },
+        "high_risk": {
+            "risk_score": 115,
+            "risk_level": "High",
+            "human_review_required": True,
+            "decision": "request_more_documents",
+        },
+    }
+    failures: list[str] = []
+    results: list[dict[str, Any]] = []
+
+    for scenario, expected in expectations.items():
+        output = _run_claim_guard(scenario)
+        fraud_signal = output.fraud_signal
+        actual = {
+            "scenario": scenario,
+            "claim_id": output.claim_id,
+            "risk_score": fraud_signal["risk_score"],
+            "risk_level": fraud_signal["risk_level"],
+            "human_review_required": fraud_signal["human_review_required"],
+            "decision": output.human_decision["decision"],
+            "final_recommendation": output.audit_summary["final_recommendation"],
+            "exception_count": len(output.audit_summary["exceptions"]),
+        }
+        results.append(actual)
+
+        for key, expected_value in expected.items():
+            if actual[key] != expected_value:
+                failures.append(f"{scenario}.{key}: expected {expected_value!r}, got {actual[key]!r}")
+
+    return UnitTestOut(
+        passed=not failures,
+        total=len(expectations),
+        failures=failures,
+        results=results,
     )
