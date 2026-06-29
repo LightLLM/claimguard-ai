@@ -1,0 +1,35 @@
+{
+  "claim_id": "CLM-2026-0002",
+  "policy_id": "POL-77881",
+  "claimant": {
+    "claimant_id": "CUST-6150",
+    "name": "Jordan Patel",
+    "email": "jordan.patel@example.com"
+  },
+  "incident": {
+    "type": "property_water_damage",
+    "date": "2026-05-25",
+    "location": "Portland, OR",
+    "description": "Kitchen water damage from appliance leak."
+  },
+  "claim_amount": 12600,
+  "currency": "USD",
+  "documents": [
+    {"type": "photos", "document_id": "DOC-2001"}
+  ],
+  "claimant_history": {
+    "claims_last_12_months": 1,
+    "prior_denials": 0
+  },
+  "vendor_history": {
+    "vendor_id": "VEN-432",
+    "name": "Cascade Restoration",
+    "duplicate_invoice_detected": false,
+    "prior_flagged_invoices": 0
+  },
+  "intake_summary": {
+    "required_documents": ["proof_of_loss", "repair_estimate", "photos"],
+    "missing_documents": ["proof_of_loss", "repair_estimate"],
+    "data_inconsistencies": []
+  }
+}

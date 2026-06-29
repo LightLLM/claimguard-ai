@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fraud Signal Output",
+  "type": "object",
+  "required": ["agent", "risk_score", "risk_level", "risk_indicators", "human_review_required", "recommended_next_step", "audit_notes"],
+  "properties": {
+    "agent": {"type": "string"},
+    "risk_score": {"type": "integer", "minimum": 0},
+    "risk_level": {"type": "string", "enum": ["Low", "Medium", "High"]},
+    "risk_indicators": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["rule", "points", "detail"],
+        "properties": {
+          "rule": {"type": "string"},
+          "points": {"type": "integer"},
+          "detail": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "human_review_required": {"type": "boolean"},
+    "recommended_next_step": {"type": "string"},
+    "audit_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

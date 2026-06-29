@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Claim Intake Output",
+  "type": "object",
+  "required": ["claim_id", "status", "missing_documents", "data_inconsistencies", "recommended_next_step"],
+  "properties": {
+    "claim_id": {"type": "string"},
+    "status": {"type": "string", "enum": ["complete", "exception", "needs_documents"]},
+    "required_documents": {"type": "array", "items": {"type": "string"}},
+    "missing_documents": {"type": "array", "items": {"type": "string"}},
+    "data_inconsistencies": {"type": "array", "items": {"type": "string"}},
+    "recommended_next_step": {"type": "string"},
+    "audit_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

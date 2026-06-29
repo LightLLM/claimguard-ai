@@ -1,0 +1,15 @@
+{
+  "policy_id": "POL-77881",
+  "status": "active",
+  "policyholder": "Maya Chen",
+  "coverage_types": ["auto_collision", "property_water_damage", "liability"],
+  "coverage_limit": 100000,
+  "deductible": 500,
+  "start_date": "2025-11-01",
+  "end_date": "2026-11-01",
+  "verification_result": {
+    "coverage_confirmed": true,
+    "exceptions": [],
+    "recommended_next_step": "continue_to_fraud_signal_review"
+  }
+}

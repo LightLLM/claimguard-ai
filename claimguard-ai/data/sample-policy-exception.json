@@ -1,0 +1,18 @@
+{
+  "policy_id": "POL-99001",
+  "status": "active",
+  "policyholder": "Alex Rivera",
+  "coverage_types": ["commercial_property_fire", "business_interruption"],
+  "coverage_limit": 75000,
+  "deductible": 2500,
+  "start_date": "2026-06-01",
+  "end_date": "2027-06-01",
+  "verification_result": {
+    "coverage_confirmed": false,
+    "exceptions": [
+      "Claim amount exceeds coverage limit.",
+      "Incident occurred within 14 days of policy start date."
+    ],
+    "recommended_next_step": "route_to_human_adjuster_for_policy_exception"
+  }
+}

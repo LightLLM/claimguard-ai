@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Claim Intake Input",
+  "type": "object",
+  "required": ["claim_id", "policy_id", "claimant", "incident", "claim_amount", "documents"],
+  "properties": {
+    "claim_id": {"type": "string"},
+    "policy_id": {"type": "string"},
+    "claimant": {"type": "object"},
+    "incident": {"type": "object"},
+    "claim_amount": {"type": "number"},
+    "currency": {"type": "string"},
+    "documents": {"type": "array", "items": {"type": "object"}}
+  },
+  "additionalProperties": true
+}

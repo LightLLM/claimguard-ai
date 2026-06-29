@@ -1,0 +1,39 @@
+{
+  "claim_id": "CLM-2026-0003",
+  "policy_id": "POL-99001",
+  "claimant": {
+    "claimant_id": "CUST-8830",
+    "name": "Alex Rivera",
+    "email": "alex.rivera@example.com"
+  },
+  "incident": {
+    "type": "commercial_property_fire",
+    "date": "2026-06-10",
+    "location": "Tacoma, WA",
+    "description": "Fire damage reported at insured warehouse."
+  },
+  "claim_amount": 87500,
+  "currency": "USD",
+  "documents": [
+    {"type": "photos", "document_id": "DOC-3001"},
+    {"type": "repair_invoice", "document_id": "DOC-3002"}
+  ],
+  "claimant_history": {
+    "claims_last_12_months": 4,
+    "prior_denials": 1
+  },
+  "vendor_history": {
+    "vendor_id": "VEN-999",
+    "name": "Rapid Response Contracting",
+    "duplicate_invoice_detected": true,
+    "prior_flagged_invoices": 3
+  },
+  "intake_summary": {
+    "required_documents": ["fire_department_report", "proof_of_loss", "repair_invoice", "photos"],
+    "missing_documents": ["fire_department_report", "proof_of_loss"],
+    "data_inconsistencies": [
+      "Vendor invoice total does not match claimed loss amount.",
+      "Incident location differs from primary insured address."
+    ]
+  }
+}

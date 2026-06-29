@@ -1,0 +1,37 @@
+{
+  "claim_id": "CLM-2026-0001",
+  "policy_id": "POL-77881",
+  "claimant": {
+    "claimant_id": "CUST-4492",
+    "name": "Maya Chen",
+    "email": "maya.chen@example.com"
+  },
+  "incident": {
+    "type": "auto_collision",
+    "date": "2026-05-18",
+    "location": "Seattle, WA",
+    "description": "Rear-end collision at low speed during commute."
+  },
+  "claim_amount": 8400,
+  "currency": "USD",
+  "documents": [
+    {"type": "police_report", "document_id": "DOC-1001"},
+    {"type": "repair_invoice", "document_id": "DOC-1002"},
+    {"type": "photos", "document_id": "DOC-1003"}
+  ],
+  "claimant_history": {
+    "claims_last_12_months": 1,
+    "prior_denials": 0
+  },
+  "vendor_history": {
+    "vendor_id": "VEN-210",
+    "name": "Northwest Auto Repair",
+    "duplicate_invoice_detected": false,
+    "prior_flagged_invoices": 0
+  },
+  "intake_summary": {
+    "required_documents": ["police_report", "repair_invoice", "photos"],
+    "missing_documents": [],
+    "data_inconsistencies": []
+  }
+}

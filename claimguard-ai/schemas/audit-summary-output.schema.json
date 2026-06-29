@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Audit Summary Output",
+  "type": "object",
+  "required": ["agent", "audit_id", "generated_at", "claim_id", "policy_id", "timeline", "decisions", "exceptions", "human_approvals", "final_recommendation", "audit_notes"],
+  "properties": {
+    "agent": {"type": "string"},
+    "audit_id": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "claim_id": {"type": "string"},
+    "policy_id": {"type": "string"},
+    "timeline": {"type": "array", "items": {"type": "object"}},
+    "decisions": {"type": "object"},
+    "exceptions": {"type": "array", "items": {"type": "string"}},
+    "human_approvals": {"type": "array", "items": {"type": "object"}},
+    "final_recommendation": {"type": "string"},
+    "audit_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}

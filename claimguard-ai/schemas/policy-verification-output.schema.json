@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Policy Verification Output",
+  "type": "object",
+  "required": ["policy_id", "policy_status", "coverage_confirmed", "exceptions", "recommended_next_step"],
+  "properties": {
+    "policy_id": {"type": "string"},
+    "policy_status": {"type": "string"},
+    "coverage_confirmed": {"type": "boolean"},
+    "coverage_limit": {"type": "number"},
+    "deductible": {"type": "number"},
+    "exceptions": {"type": "array", "items": {"type": "string"}},
+    "recommended_next_step": {"type": "string"},
+    "audit_notes": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
